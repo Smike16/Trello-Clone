@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from './store';
+import { Layout } from './components/Layout';
+import { Sidebar } from './components/Sidebar';
+import { Content } from './components/Content';
+import { BoardList } from './components/BoardList';
+import { StatusList } from './components/StatusList';
+import { AddForm } from './components/AddForm';
 
-function App() {
+export const App = () => {
+  const { state, actions } = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout title={state.title}>
+      <Sidebar>
+        <BoardList
+          list={state.boards}
+          selectedId={state.boardId}
+          onSelect={actions.onSelectBoard}
+          onAdd={actions.onAddBoard} />
+      </Sidebar>
+      <Content>
+        {state.boardId !== null ? (
+          <>
+            <StatusList
+              list={state.statuses}
+              onAddCard={actions.onAddCard}
+              onUpdateStatus={actions.onUpdateStatus} />
+            <AddForm
+              placeholder='Add new status'
+              onSubmit={actions.onAddStatus} />
+          </>
+        ) : null}
+      </Content>
+    </Layout>
   );
-}
-
-export default App;
+};

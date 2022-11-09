@@ -1,0 +1,24 @@
+.status-item {
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #eee;
+}
+
+.status-item-title,
+.status-item-cards {
+  margin-bottom: 10px;
+}
+
+.status-item-dragarea {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.status-item-dragarea_dragover {
+  border-style: dashed;
+  background-color: #fff;
+}

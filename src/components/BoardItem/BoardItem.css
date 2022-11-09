@@ -1,0 +1,15 @@
+.board-item {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.board-item:hover {
+  background-color: #eee;
+}
+
+.board-item_selected {
+  background-color: #eee;
+  font-weight: bold;
+}
